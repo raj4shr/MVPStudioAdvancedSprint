@@ -59,6 +59,7 @@ public class DeleteShareSkillPage : IExtentRpt
         elements[elements.Count - 1].Click();
     }
 
+    //Delete share skill method
     public bool DeleteShareSkill(string shareSkillTitle)
     {
         this.shareSkillTitle = shareSkillTitle;
@@ -76,6 +77,7 @@ public class DeleteShareSkillPage : IExtentRpt
         return rowExists;
     }
 
+    //Check if share skill exists
     public bool CheckShareSkill()
     {
         for (int i = 0; i < rowElements.Count; i++)

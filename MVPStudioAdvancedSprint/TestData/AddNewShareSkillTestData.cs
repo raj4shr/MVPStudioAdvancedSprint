@@ -18,17 +18,18 @@ public class NewShareSkillInfo : IEnumerable
 {
     public IEnumerator GetEnumerator()
     {
-        yield return new string[] { "SpecFlow", "BDD in Csharp", "Programming & Tech", "QA", "Programming", "10/02/2023", "10/03/2023", "Mon", "07:00 am", "3:30 pm", "Java"};
-        yield return new string[] { "Cucumber", "", "Programming & Tech", "QA", "Programming", "10/02/2023", "10/03/2023", "Mon", "07:00 am", "3:30 pm", "Java" };
-        yield return new string[] { "Nunit", "BDD in CSharp", "","QA", "Programming", "10/02/2023", "10/03/2023", "Mon", "07:00 am", "3:30 pm", "Java" };
-        yield return new string[] { "Docker", "BDD in CSharp", "Programming & Tech", "", "Programming", "10/02/2023", "10/03/2023", "Mon", "07:00 am", "3:30 pm", "Java" };
-        yield return new string[] { "Postman", "BDD in CSharp", "Programming & Tech", "QA", "", "10/02/2023", "10/03/2023", "Mon", "07:00 am", "3:30 pm", "Java" };
-        yield return new string[] { "Jmeter", "BDD in Csharp", "Programming & Tech", "QA", "Programming", "", "10/03/2023", "Mon", "07:00 am", "3:30 pm", "Java" };
-        yield return new string[] { "XUnit", "BDD in Csharp", "Programming & Tech", "QA", "Programming", "", "10/03/2023", "Mon", "07:00 am", "3:30 pm", "Java" };
-        yield return new string[] { "Trello", "BDD in Csharp", "Programming & Tech", "QA", "Programming", "10/02/2023", "10/03/2023","", "07:00 am", "3:30 pm", "Java" };
-        yield return new string[] { "Jira", "BDD in Csharp", "Programming & Tech", "QA", "Programming", "10/02/2023", "10/03/2023", "Mon", "", "3:30 pm", "Java" };
-        yield return new string[] { "Newman", "BDD in Csharp", "Programming & Tech", "QA", "Programming", "10/02/2023", "10/03/2023", "Mon", "07:00 am", "", "Java" };
-        yield return new string[] { "API", "BDD in Csharp", "Programming & Tech", "QA", "Programming", "10/02/2023", "10/03/2023", "Mon", "07:00 am", "3:30 pm", "" };
+        yield return new string[] { "SpecFlow", "BDD in Csharp", "Programming & Tech", "QA", "Programming", DateTime.Now.ToShortDateString(), DateTime.Now.AddDays(20).ToShortDateString(), "Thu", "07:00am","08:00pm", "Java"};
+        yield return new string[] { "Cucumber", "", "Programming & Tech", "QA", "Programming", DateTime.Now.ToShortDateString(), DateTime.Now.AddDays(20).ToShortDateString(), "Tue", "07:00am", "3:30pm", "Java" };
+        yield return new string[] { "Nunit", "BDD in CSharp", "","QA", "Programming", DateTime.Now.ToShortDateString(), DateTime.Now.AddDays(20).ToShortDateString(), "Wed", "07:00am", "3:30pm", "Java" };
+        yield return new string[] { "Docker", "BDD in CSharp", "Programming & Tech", "", "Programming", DateTime.Now.ToShortDateString(), DateTime.Now.AddDays(20).ToShortDateString(), "Thu", "07:00am", "3:3 pm", "Java" };
+        yield return new string[] { "Postman", "BDD in CSharp", "Programming & Tech", "QA", "", DateTime.Now.ToShortDateString(), DateTime.Now.AddDays(20).ToShortDateString(), "Fri", "07:00am", "3:30pm", "Java" };
+        yield return new string[] { "Jmeter", "BDD in Csharp", "Programming & Tech", "QA", DateTime.Now.ToShortDateString(), DateTime.Now.AddDays(20).ToShortDateString(), "Sat", "07:00am", "3:30pm", "Java" };
+        yield return new string[] { "XUnit", "BDD in Csharp", "Programming & Tech", "QA", "Programming", DateTime.Now.ToShortDateString(), "", "Sun", "07:00am", "3:30pm", "Java" };
+        yield return new string[] { "XUnit", "BDD in Csharp", "Programming & Tech", "QA", "Programming", "", DateTime.Now.AddDays(20).ToShortDateString(), "Sun", "07:00am", "3:30pm", "Java" };
+        yield return new string[] { "Trello", "BDD in Csharp", "Programming & Tech", "QA", "Programming", DateTime.Now.ToShortDateString(), DateTime.Now.AddDays(20).ToShortDateString(), "", "07:00am", "3:30pm", "Java" };
+        yield return new string[] { "Jira", "BDD in Csharp", "Programming & Tech", "QA", "Programming", DateTime.Now.ToShortDateString(), DateTime.Now.AddDays(20).ToShortDateString(), "Mon", "", "3:30pm", "Java" };
+        yield return new string[] { "Newman", "BDD in Csharp", "Programming & Tech", "QA", "Programming", DateTime.Now.ToShortDateString(), DateTime.Now.AddDays(20).ToShortDateString(), "Mon", "07:00am", "", "Java" };
+        yield return new string[] { "API", "BDD in Csharp", "Programming & Tech", "QA", "Programming", DateTime.Now.ToShortDateString(), DateTime.Now.AddDays(20).ToShortDateString(), "Mon", "07:00am", "3:30pm", "" };
 
     }
 }

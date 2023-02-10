@@ -12,6 +12,7 @@ public class CommonSendKeysAndClickElements : CommonDriver
         path = "";
     }
 
+    //Following are explicit waits for elements for different situations
     public void SendKeysToElement(By elementLocator, string elementValue)
     {
         wait.Until(ExpectedConditions.ElementIsVisible(elementLocator));

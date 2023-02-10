@@ -6,6 +6,7 @@ namespace MVPCompetitionTask;
 
 public class NewUserRegistrationPage : IExtentRpt
 {
+    //Element repository for the page
     private readonly By joinBtn = By.XPath("//button[text()='Join']");
     private readonly By firstNameInputBx = By.Name("firstName");
     private readonly By lastNameInputBx = By.Name("lastName");
@@ -35,48 +36,56 @@ public class NewUserRegistrationPage : IExtentRpt
         extentTest=extentReport.CreateTest("Test_New User Sign Up Test" + DateTime.Now.ToString("_hhmmss"));
     }
 
+    //Click on join btn
     public void ClickOnJoinBtn()
     {
         elementInteractions.ClickElement(joinBtn);
         extentTest.Log(Status.Info, "New user join button clicked");
     }
 
+    //Enter first name
     public void SendFirstName(string firstName)
     {
         elementInteractions.SendKeysToElement(firstNameInputBx, firstName);
         extentTest.Log(Status.Info,firstName+ " firstname entered");
     }
 
+    //Enter last name
     public void SendLastName(string lastName)
     {
         elementInteractions.SendKeysToElement(lastNameInputBx, lastName);
         extentTest.Log(Status.Info, lastName+" lastname entered");
     }
 
+    //Enter email
     public void SendEmail(string email)
     {
         elementInteractions.SendKeysToElement(emailInputBx, email);
         extentTest.Log(Status.Info, email+ " email entered");
     }
 
+    //Enter password
     public void SendPassword(string password)
     {
         elementInteractions.SendKeysToElement(passwordInputBx, password);
         extentTest.Log(Status.Info, password+ " password entered");
     }
 
+    //Enter confirm password
     public void SendConfirmPassword(string confirmPassword)
     {
         elementInteractions.SendKeysToElement(confirmPasswordInputBx, confirmPassword);
         extentTest.Log(Status.Info, confirmPassword+ " confirmpassword entered");
     }
 
+    //Click on agree to terms check box
     public void AgreeToTerms()
     {
         elementInteractions.ClickOnCheckBox(termsInputBx);
         extentTest.Log(Status.Info, "Terms agreed");
     }
 
+    //Click on join btn after the details are entered
     public void ClickOnJoinBtnAfterInfo()
     {
         elementInteractions.TakeScreenShot();
@@ -84,17 +93,20 @@ public class NewUserRegistrationPage : IExtentRpt
         extentTest.Log(Status.Info, "Join button clicked after all the info entered");
     }
 
+    //Click on login btn
     public void ClickOnLoginBtn()
     {
         elementInteractions.ClickElement(LoginBtn);
         extentTest.Log(Status.Info, "Login button clicked and user is redirected to login window");
     }
 
+    //Custom wait for me to check for any alerts
     public static void AlertWait()
     {
         for (long i = 0; i < 300000000; i++) ;
     }
 
+    //Checking if the join btn is enabled and no alerts present
     public void NewUserCreated()
     {
         if (elementInteractions.ReturnElementCollection(joinButtonEnabled).Count == 1 && elementInteractions.ReturnElementCollection(invalidDetailsAlert).Count ==0)
@@ -107,6 +119,8 @@ public class NewUserRegistrationPage : IExtentRpt
     {
         elementInteractions.Close();
     }
+
+    //Add new user method
     public void NewUserSignUp(string firstName,string lastName,string email,string password,string confirmPassword)
     {
         ClickOnJoinBtn();

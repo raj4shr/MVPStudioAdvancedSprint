@@ -24,35 +24,39 @@ public class LoginToPortalPage : IExtentRpt
         commonDriver.InitDriver();
         elementInteractions = new CommonSendKeysAndClickElements();
         //Creating a test report
-        this.testReport = IExtentRpt.testReport;
-        test = testReport.CreateTest("Test_LoginToPortal" + DateTime.Now.ToString("_hhmmss")).Info("Login Test");
+        //this.testReport = IExtentRpt.testReport;
+        //test = testReport.CreateTest("Test_LoginToPortal" + DateTime.Now.ToString("_hhmmss")).Info("Login Test");
     }
 
     public void LogintoPortal()
     {
-        test.Log(Status.Info, "Navigate to Url");
+        //test.Log(Status.Info, "Navigate to Url");
         //Clicking on sign in button
         elementInteractions.ClickElement(signInBtn);
-        test.Log(Status.Info, "Click on Sign In");
+        //test.Log(Status.Info, "Click on Sign In");
         //Signing in method with valid credentials
         EnterLoginDetails();
     }
 
+    //Enter user name
     public void EnterUserName()
     {
         elementInteractions.SendKeysToElement(userNameInputBox, userName);
     }
 
+    //Enter password
     public void EnterPassword()
     {
         elementInteractions.SendKeysToElement(passwordInputBox, password);
     }
 
+    //Click on login button
     public void ClickOnLoginButoon()
     {
         elementInteractions.ClickElement(loginBtn);
     }
 
+    //Close excel file stream
     public void CloseFileStream()
     {
         //Closing file streams
@@ -80,6 +84,7 @@ public class LoginToPortalPage : IExtentRpt
     }
     #endregion
 
+    //Login method
     public void EnterLoginDetails()
     {
         //Getting login credentials from excel file using excel data reader
@@ -88,10 +93,10 @@ public class LoginToPortalPage : IExtentRpt
         //Sending user name and password
         EnterUserName();
         EnterPassword();
-        test.Log(Status.Info, "Send username and password credentials");
+        //test.Log(Status.Info, "Send username and password credentials");
         //Click on login button
         ClickOnLoginButoon();
-        test.Log(Status.Info, "Login Button Clicked");
+        //test.Log(Status.Info, "Login Button Clicked");
         //Login successful assertion
         LoginSuccessful();
         CloseFileStream();
@@ -100,10 +105,10 @@ public class LoginToPortalPage : IExtentRpt
     public void LoginSuccessful()
     {
         //If sighout button is visible then login sucessful
-        if(elementInteractions.ElementIsDisplayed(signOutBtn))
-            test.Log(Status.Pass, "Test Passed");
-        else
-            test.Log(Status.Fail, "Test Failed");
+        //if(elementInteractions.ElementIsDisplayed(signOutBtn))
+            //test.Log(Status.Pass, "Test Passed");
+        //else
+            //test.Log(Status.Fail, "Test Failed");
         //Login successful assertion 
         elementInteractions.ElementIsDisplayed(signOutBtn).Should().BeTrue();
     }

@@ -15,7 +15,7 @@ public class ManageListingsTest : CommonDriver
         loginToPortalPage.LogintoPortal();
     }
     //Delete a share skill if the share skill exists
-    [TestCase("NUnit")]
+    [TestCase("JMeter")]
     public void DeleteShareSkill(string title)
     {
         DeleteShareSkillPage deleteShareSkillPage = new();

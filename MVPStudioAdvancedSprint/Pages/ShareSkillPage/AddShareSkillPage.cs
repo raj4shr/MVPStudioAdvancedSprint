@@ -21,6 +21,8 @@ public class AddShareSkillPage : IExtentRpt
     private readonly By categoryID = By.Name("categoryId");
     private readonly By subcategoryID = By.Name("subcategoryId");
     private readonly By shareSkillTags = By.XPath("//input[@placeholder='Add new tag']");
+    private readonly By startDateInputBox = By.Name("startDate");
+    private readonly By endDateInputBox = By.Name("endDate");
     private readonly By availableDays = By.Name("Available");
     private readonly By startTime = By.Name("StartTime");
     private readonly By endTime = By.Name("EndTime");
@@ -54,6 +56,17 @@ public class AddShareSkillPage : IExtentRpt
         availableDaysStr.Add("Sat", 6);
     }
 
+    //Enetering start date
+    public void EnterStartDate(string startDate)
+    {
+        elementInteractions.SendKeysToElement(startDateInputBox, startDate);
+    }
+
+    //Enetering end date
+    public void EnterEndDate(string endDate)
+    {
+        elementInteractions.SendKeysToElement(endDateInputBox, endDate);
+    }
     public void ClickShareSkillBtn()
     {
         //Clicking on share skill button
@@ -111,20 +124,26 @@ public class AddShareSkillPage : IExtentRpt
             availableDaysElements[availableDaysStr[day]].Click();
     }
 
-    public void EnterStartTime(string startTimeStr)
+    public void EnterStartTime(string startTimeStr,string day)
     {
         //Selcting start time
         endTimeElements = elementInteractions.ReturnElementCollectionByPresenceOfAllElements(startTime);
-        endTimeElements[3].SendKeys(startTimeStr);
-        endTimeElements[3].SendKeys(Keys.Enter);
+        if (day != "")
+        {
+            endTimeElements[availableDaysStr[day]].SendKeys(startTimeStr);
+            endTimeElements[availableDaysStr[day]].SendKeys(Keys.Enter);
+        }
     }
 
-    public void EnterEndTime(string endTimeStr)
+    public void EnterEndTime(string endTimeStr,string day)
     {
         //Selecting end time
         startTimeElements = elementInteractions.ReturnElementCollectionByPresenceOfAllElements(endTime);
-        startTimeElements[3].SendKeys(endTimeStr);
-        startTimeElements[3].SendKeys(Keys.Enter);
+        if (day != "")
+        {
+            startTimeElements[availableDaysStr[day]].SendKeys(endTimeStr);
+            startTimeElements[availableDaysStr[day]].SendKeys(Keys.Enter);
+        }
     }
 
     public static void AlertWait()
@@ -156,6 +175,7 @@ public class AddShareSkillPage : IExtentRpt
             invalidDetailsAlertPresent = true;
     }
 
+    //Add new skill method
     public void AddNewShareSkill(string shareSkillTitle, string shareSkillDesc, string shareSkillCategory, string shareSkillSubcategory,string Tags, string startDate, string endDate, string day,string startTime,string endTime, string skillExchange)
     {
         this.shareSkillTitleStr = shareSkillTitle;
@@ -175,9 +195,13 @@ public class AddShareSkillPage : IExtentRpt
         elementInteractions.TakeScreenShot();
         EnterShareSkillTags(Tags);
         test.Log(Status.Info, Tags+ " Share skill tags entered");
+        EnterStartDate(startDate);
+        test.Log(Status.Info, startDate + " Share skill startdare entered");
+        EnterEndDate(endDate);
+        test.Log(Status.Info, endDate + " Share skill enddate entered");
         EnterAvailableDays(day);
-        EnterStartTime(startTime);
-        EnterEndTime(endTime);
+        EnterStartTime(startTime,day);
+        EnterEndTime(endTime,day);
         test.Log(Status.Info, day + startTime+ endDate+ " Available days entered");
         EnterShareSkillSkillExchangeTag(skillExchange);
         test.Log(Status.Info, skillExchange+ " Share skill tags entered");

@@ -41,11 +41,13 @@ public class ViewShareSkillPage : IExtentRpt
         colElements = rowElements[rowIndex].FindElements(manageListingsColumns);
     }
 
+    //Clicking on manage listings
     public void ClickManageListingViewBtn()
     {
         colElements[7].FindElements(manageListingsViewBtn)[0].Click();
     }
 
+    //View share skill method
     public bool ViewShareSkill(string shareSkillTitle)
     {
         ClickOnManageListingsBtn();
@@ -67,6 +69,7 @@ public class ViewShareSkillPage : IExtentRpt
         return shareSkillFound;
     }
 
+    //Check if share skill exists
     public void CheckIfShareSkillFound()
     {
         if(shareSkillFound)
@@ -81,6 +84,7 @@ public class ViewShareSkillPage : IExtentRpt
         }
     }
 
+    //Assertion for view shareskill
     public void ViewSkillPageAssertion()
     {
         if(elementInteractions.ElementIsDisplayed(pageNavigated))
