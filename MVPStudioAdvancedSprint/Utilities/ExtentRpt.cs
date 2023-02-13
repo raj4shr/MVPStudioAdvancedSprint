@@ -8,7 +8,7 @@ public interface IExtentRpt
     {
         //Initialising extent reports in OneTimeSetup to be used for all the tests
         testReport = new ExtentReports();   
-        string path = @"C:\ExtentReports\" + DateTime.Now.ToString("_MMddyyyy_hhmmss") + @"\index.html";
+        string path = @"C:\MVPStudioAdvacedSprint\MVPStudioAdvancedSprint\TestsRunExtentReport\" + DateTime.Now.ToString("_MMddyyyy_hhmmss") + @"\index.html";
         var htmlReporter = new ExtentHtmlReporter(path);
         htmlReporter.Config.Theme = Theme.Standard;
         testReport.AttachReporter(htmlReporter);

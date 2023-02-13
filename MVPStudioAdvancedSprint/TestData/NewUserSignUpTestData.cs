@@ -8,7 +8,7 @@ public class NewUserSignUpTestData
 {
     public static IEnumerable<TestCaseData> NewUserSignUpData()
     {
-        yield return new TestCaseData("Kratos", "GOW", "KratosGOWR@GOW.com", "santamonica", "santamonica").SetName("New user sign up with valid info");
+        yield return new TestCaseData("Kratos", "GOW", "KraTosGOwR@GOW.com", "santamonica", "santamonica").SetName("New user sign up with valid info");
         yield return new TestCaseData("Kratos", "GOW", "GOWGOW.com", "santamonica", "santamonica").SetName("New user data with invalid email -- No @");
         yield return new TestCaseData("Kratos", "GOW", "GOW@GOW", "santamonica", "santamonica").SetName("New user data with invalid email -- No dot com");
         yield return new TestCaseData("", "GOW", "GOW@GOW.com", "santamonica", "santamonica").SetName("New user data with blank first name");
@@ -24,7 +24,7 @@ public class UserSignUpInfo : IEnumerable
 {
     public IEnumerator GetEnumerator()
     {
-        yield return new object[] { "Kratos", "GOW", "LastOfUs@LOS.com", "naughtydog", "naughtydog", true };
+        yield return new object[] { "Kratos", "GOW", "LastOFUs@LOS.com", "naughtydog", "naughtydog", true };
         yield return new object[] { "Kratos", "GOW", "GOWGOW.com", "santamonica", "santamonica",false };
         yield return new object[] { "Kratos", "GOW", "GOW@GOW", "santamonica", "santamonica",false };
         yield return new object[] { "", "GOW", "GOW@GOW.com", "santamonica", "santamonica",false };
@@ -33,6 +33,6 @@ public class UserSignUpInfo : IEnumerable
         yield return new object[] { "Kratos", "GOW", "GOW@GOW.com", "", "santamonica",false };
         yield return new object[] { "Kratos", "GOW", "GOWgow@GOW.com", "santa monica", "santa monica" , false };
         //same as the first object array but email is written in mixed case---should be false because it's already registered
-        yield return new object[] { "Kratos", "GOW", "LastofUS@los.com", "naughtydog", "naughtydog", false };
+        yield return new object[] { "Kratos", "GOW", "LaStofUS@los.com", "naughtydog", "naughtydog", false };
     }
 }
