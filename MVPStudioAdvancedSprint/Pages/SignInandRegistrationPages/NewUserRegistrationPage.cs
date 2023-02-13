@@ -1,11 +1,18 @@
-﻿
+﻿using System.Runtime.InteropServices;
 
-using Gherkin;
-
-namespace MVPCompetitionTask;
+namespace MVPCompetitionSprint;
 
 public class NewUserRegistrationPage : IExtentRpt
 {
+    //Variables to open excel sheet and write new user credentials into it
+    private string filename;
+    private Excel.Application application;
+    private Excel.Workbook workbook;
+    private Excel.Worksheet worksheet;
+    private Excel.Range range;
+    private int newRowNumInExcel;
+    private string newUserEmailToWriteToExcel, newUserPasswordToWriyeToExcel;
+
     //Element repository for the page
     private readonly By joinBtn = By.XPath("//button[text()='Join']");
     private readonly By firstNameInputBx = By.Name("firstName");
@@ -23,14 +30,12 @@ public class NewUserRegistrationPage : IExtentRpt
     private readonly ExtentTest extentTest;
     private readonly ExtentReports extentReport;
 
-    public bool createdNewUser { get; set; }
 
-    public bool alertForInvalidDetails { get; set; }    
+
+    public bool newUserCreated { get; set; }
     
     public NewUserRegistrationPage()
     {
-        createdNewUser = false;
-        alertForInvalidDetails = false;
         elementInteractions=new CommonSendKeysAndClickElements();
         extentReport=IExtentRpt.testReport;
         extentTest=extentReport.CreateTest("Test_New User Sign Up Test" + DateTime.Now.ToString("_hhmmss"));
@@ -109,10 +114,11 @@ public class NewUserRegistrationPage : IExtentRpt
     //Checking if the join btn is enabled and no alerts present
     public void NewUserCreated()
     {
-        if (elementInteractions.ReturnElementCollection(joinButtonEnabled).Count == 1 && elementInteractions.ReturnElementCollection(invalidDetailsAlert).Count ==0)
-            createdNewUser = true;
-        else
-            alertForInvalidDetails = elementInteractions.ReturnElementCollection(invalidDetailsAlert).Count > 0;
+        if (elementInteractions.ReturnElementCollection(joinButtonEnabled).Count == 1 && elementInteractions.ReturnElementCollection(invalidDetailsAlert).Count == 0)
+        {
+            newUserCreated = true;
+            WriteNewUserCredeantialsToExcelFile();
+        }
     }
 
     public void Close()
@@ -120,9 +126,67 @@ public class NewUserRegistrationPage : IExtentRpt
         elementInteractions.Close();
     }
 
+    #region Writing new user credentials to the excel file
+
+    //Method to write new user credentials to LoginCred.xlsx excel file
+    public void WriteNewUserCredeantialsToExcelFile()
+    {
+        if (newUserCreated)
+        {
+            InitExcel();
+            WriteData();
+            CloseExcelObjects();
+        }
+    }
+
+    //Initialising excel file object
+    public void InitExcel()
+    {
+        filename = @"C:\MVPStudioAdvacedSprint\MVPStudioAdvancedSprint\MVPStudioAdvancedSprint\LoginCred.xlsx";
+        application = new Excel.Application();
+        workbook = application.Workbooks.Open(filename);
+        worksheet = workbook.Worksheets[1];
+        range = worksheet.UsedRange;
+    }
+
+    //Method to get the next row to write new details on
+    public void GetNextExcelRowToWrite()
+    {
+        int i = worksheet.Rows.Count;
+        int j = worksheet.UsedRange.Count;
+        newRowNumInExcel = j / 3;
+    }
+
+    //Method to write the user email and poassword to the excel file
+    public void WriteData()
+    {
+        GetNextExcelRowToWrite();
+        worksheet.Rows[newRowNumInExcel + 1].Cells[1].Value = newUserEmailToWriteToExcel;
+        worksheet.Rows[newRowNumInExcel + 1].Cells[2].Value = newUserPasswordToWriyeToExcel;
+        worksheet.Rows[newRowNumInExcel + 1].Cells[3].Value = newRowNumInExcel;
+        workbook.Save();
+    }
+
+    //Method to garbage collect excel objects
+    public void CloseExcelObjects()
+    {
+        GC.Collect();
+        GC.WaitForPendingFinalizers();
+        Marshal.ReleaseComObject(range);
+        Marshal.ReleaseComObject(worksheet);
+        workbook.Close();
+        Marshal.ReleaseComObject(workbook);
+        application.Quit();
+        Marshal.ReleaseComObject(application);
+    }
+
+    #endregion
+
     //Add new user method
     public void NewUserSignUp(string firstName,string lastName,string email,string password,string confirmPassword)
     {
+        newUserEmailToWriteToExcel = email;
+        newUserPasswordToWriyeToExcel = password;
         ClickOnJoinBtn();
         SendFirstName(firstName);
         SendLastName(lastName);
@@ -134,7 +198,7 @@ public class NewUserRegistrationPage : IExtentRpt
         if(elementInteractions.ReturnElementCollection(joinButtonEnabled).Count == 1)
             AlertWait();
         NewUserCreated();
-        if (createdNewUser==true && alertForInvalidDetails==false)
+        if (newUserCreated)
             extentTest.Log(Status.Pass, "New user created successfully");
         else
             extentTest.Log(Status.Fail, "New user creation failed because of invalid input");

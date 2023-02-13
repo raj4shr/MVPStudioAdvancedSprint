@@ -1,7 +1,8 @@
-﻿namespace MVPCompetitionTask;
+﻿namespace MVPCompetitionSprint;
 
 public class LoginToPortalPage : IExtentRpt
 {
+    
     private CommonSendKeysAndClickElements elementInteractions;
     CommonDriver commonDriver = new CommonDriver();
     private ExtentTest test;
@@ -69,7 +70,7 @@ public class LoginToPortalPage : IExtentRpt
     public void ExcelReadDataForLoginCredentials()
     {
         //Path to the excel file with login credentials
-        filePath = @"C:\MVPCompetionTask2NUnit\MVPCompetitionTaskNUnit\MVPCompetitionTask\LoginCred.xlsx";
+        filePath = @"C:\MVPStudioAdvacedSprint\MVPStudioAdvancedSprint\MVPStudioAdvancedSprint\LoginCred.xlsx";
         //Encoding excel file stream
         System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         //Reading login credentials from excel file to be used in login page
@@ -79,8 +80,8 @@ public class LoginToPortalPage : IExtentRpt
         dataSet = reader.AsDataSet();
         //Since only 1 sheet is in the excel file, index 0 is taken
         dataTable = dataSet.Tables[0];
-        userName = dataTable.Rows[1][0].ToString();
-        password = dataTable.Rows[1][1].ToString();
+        userName = dataTable.Rows[2][0].ToString();
+        password = dataTable.Rows[2][1].ToString();
     }
     #endregion
 

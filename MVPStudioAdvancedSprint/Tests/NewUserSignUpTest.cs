@@ -1,5 +1,5 @@
 ﻿
-namespace MVPCompetitionTask;
+namespace MVPCompetitionSprint;
 
 [TestFixture]
 public class NewUserSignUpTest : NewUserSignUpTestData
@@ -19,13 +19,13 @@ public class NewUserSignUpTest : NewUserSignUpTestData
     //[TestCaseSource(nameof(NewUserSignUpData))]
     //option 2 
     [TestCaseSource(typeof(UserSignUpInfo))]
-    public void NewUserSignUp(string firstName,string lastName,string email,string password,string confirmPassword)
+    public void NewUserSignUp(string firstName,string lastName,string email,string password,string confirmPassword,bool valid)
     {
         newUserRegistrationPage.NewUserSignUp(firstName,lastName,email,password,confirmPassword);
-        if(newUserRegistrationPage.createdNewUser==true || newUserRegistrationPage.alertForInvalidDetails==true)
-            Assert.That(true);
+        if (valid)
+            newUserRegistrationPage.newUserCreated.Should().BeTrue();
         else
-            Assert.That(false,"User alert is not displayed for invalid details"); 
+            newUserRegistrationPage.newUserCreated.Should().BeFalse();  
     }
 
     [TearDown]

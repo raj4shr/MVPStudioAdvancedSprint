@@ -1,7 +1,7 @@
 ﻿
 using System.Collections;
 
-namespace MVPCompetitionTask;
+namespace MVPCompetitionSprint;
 
 //option 1
 public class NewUserSignUpTestData
@@ -24,13 +24,15 @@ public class UserSignUpInfo : IEnumerable
 {
     public IEnumerator GetEnumerator()
     {
-        yield return new string[] { "Kratos", "GOW", "KratosGOWR@GOW.com", "santamonica", "santamonica" };
-        yield return new string[] { "Kratos", "GOW", "GOWGOW.com", "santamonica", "santamonica" };
-        yield return new string[] { "Kratos", "GOW", "GOW@GOW", "santamonica", "santamonica" };
-        yield return new string[] { "", "GOW", "GOW@GOW.com", "santamonica", "santamonica" };
-        yield return new string[] { "Kratos", "GOW", "GOW@GOW1.com", "santa  monica", "santa  monica" };
-        yield return new string[] { "", "", "GOW@GOW1.com", "santamonica", "santamonica" };
-        yield return new string[] { "Kratos", "GOW", "GOW@GOW.com", "", "santamonica" };
-        yield return new string[] { "Kratos", "GOW", "GOWgow@GOW.com", "santa monica", "santa monica" };
+        yield return new object[] { "Kratos", "GOW", "LastOfUs@LOS.com", "naughtydog", "naughtydog", true };
+        yield return new object[] { "Kratos", "GOW", "GOWGOW.com", "santamonica", "santamonica",false };
+        yield return new object[] { "Kratos", "GOW", "GOW@GOW", "santamonica", "santamonica",false };
+        yield return new object[] { "", "GOW", "GOW@GOW.com", "santamonica", "santamonica",false };
+        yield return new object[] { "Kratos", "GOW", "GOW@GOW1.com", "santa  monica", "santa  monica",false };
+        yield return new object[] { "", "", "GOW@GOW1.com", "santamonica", "santamonica",false };
+        yield return new object[] { "Kratos", "GOW", "GOW@GOW.com", "", "santamonica",false };
+        yield return new object[] { "Kratos", "GOW", "GOWgow@GOW.com", "santa monica", "santa monica" , false };
+        //same as the first object array but email is written in mixed case---should be false because it's already registered
+        yield return new object[] { "Kratos", "GOW", "LastofUS@los.com", "naughtydog", "naughtydog", false };
     }
 }

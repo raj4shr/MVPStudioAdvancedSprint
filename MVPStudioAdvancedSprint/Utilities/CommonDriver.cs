@@ -11,9 +11,10 @@ global using SeleniumExtras.WaitHelpers;
 global using AventStack.ExtentReports.Reporter.Configuration;
 global using AventStack.ExtentReports.Reporter;
 global using System.Collections;
+global using Excel = Microsoft.Office.Interop.Excel;
 
 
-namespace MVPCompetitionTask;
+namespace MVPCompetitionSprint;
 
 public class CommonDriver
 {

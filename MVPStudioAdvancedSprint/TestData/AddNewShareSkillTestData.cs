@@ -1,5 +1,5 @@
 ﻿
-namespace MVPCompetitionTask;
+namespace MVPCompetitionSprint;
 
 //option 1
 public class AddNewShareSkillTestData

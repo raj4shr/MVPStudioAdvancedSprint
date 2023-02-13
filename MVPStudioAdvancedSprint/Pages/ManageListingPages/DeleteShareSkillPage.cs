@@ -1,4 +1,4 @@
-﻿namespace MVPCompetitionTask;
+﻿namespace MVPCompetitionSprint;
 
 public class DeleteShareSkillPage : IExtentRpt
 {

@@ -1,7 +1,7 @@
-﻿namespace MVPCompetitionTask;
+﻿namespace MVPCompetitionSprint;
 
 [SetUpFixture]
-class SetupandTeardown : CommonDriver,IExtentRpt
+class SetupandTeardown : IExtentRpt
 {
     [OneTimeSetUp]
     public void oneTimeSetup()

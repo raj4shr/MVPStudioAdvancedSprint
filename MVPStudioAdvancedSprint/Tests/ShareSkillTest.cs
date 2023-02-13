@@ -1,6 +1,5 @@
-﻿using NUnit.Framework;
-
-namespace MVPCompetitionTask;
+﻿
+namespace MVPCompetitionSprint;
 
 [TestFixture]
 public class ShareSkillTest : AddNewShareSkillTestData
