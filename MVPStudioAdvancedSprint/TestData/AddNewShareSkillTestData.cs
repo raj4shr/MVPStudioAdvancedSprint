@@ -1,5 +1,5 @@
 ﻿
-namespace MVPCompetitionSprint;
+namespace MVPAdvancedTask;
 
 //option 1
 public class AddNewShareSkillTestData
@@ -23,7 +23,7 @@ public class NewShareSkillInfo : IEnumerable
         yield return new string[] { "Nunit", "BDD in CSharp", "","QA", "Programming", DateTime.Now.ToShortDateString(), DateTime.Now.AddDays(20).ToShortDateString(), "Wed", "07:00am", "3:30pm", "Java" };
         yield return new string[] { "Docker", "BDD in CSharp", "Programming & Tech", "", "Programming", DateTime.Now.ToShortDateString(), DateTime.Now.AddDays(20).ToShortDateString(), "Thu", "07:00am", "3:3 pm", "Java" };
         yield return new string[] { "Postman", "BDD in CSharp", "Programming & Tech", "QA", "", DateTime.Now.ToShortDateString(), DateTime.Now.AddDays(20).ToShortDateString(), "Fri", "07:00am", "3:30pm", "Java" };
-        yield return new string[] { "Jmeter", "BDD in Csharp", "Programming & Tech", "QA", DateTime.Now.ToShortDateString(), DateTime.Now.AddDays(20).ToShortDateString(), "Sat", "07:00am", "3:30pm", "Java" };
+        yield return new string[] { "Jmeter", "BDD in Csharp", "Programming & Tech", "QA", "Programming", DateTime.Now.ToShortDateString(), DateTime.Now.AddDays(20).ToShortDateString(), "Sat", "07:00am", "3:30pm", "Java" };
         yield return new string[] { "XUnit", "BDD in Csharp", "Programming & Tech", "QA", "Programming", DateTime.Now.ToShortDateString(), "", "Sun", "07:00am", "3:30pm", "Java" };
         yield return new string[] { "XUnit", "BDD in Csharp", "Programming & Tech", "QA", "Programming", "", DateTime.Now.AddDays(20).ToShortDateString(), "Sun", "07:00am", "3:30pm", "Java" };
         yield return new string[] { "Trello", "BDD in Csharp", "Programming & Tech", "QA", "Programming", DateTime.Now.ToShortDateString(), DateTime.Now.AddDays(20).ToShortDateString(), "", "07:00am", "3:30pm", "Java" };

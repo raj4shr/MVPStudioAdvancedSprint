@@ -1,4 +1,4 @@
-﻿namespace MVPCompetitionSprint;
+﻿namespace MVPAdvancedTask;
 public class ChangePasswordPage : IExtentRpt
 {
     //Element repository for change password page

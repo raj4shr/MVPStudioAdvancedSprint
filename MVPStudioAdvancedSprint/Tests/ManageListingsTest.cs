@@ -1,4 +1,4 @@
-﻿namespace MVPCompetitionSprint;
+﻿namespace MVPAdvancedTask;
 
 [TestFixture]
 public class ManageListingsTest : CommonDriver

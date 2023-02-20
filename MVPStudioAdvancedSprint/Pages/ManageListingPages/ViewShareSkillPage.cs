@@ -1,4 +1,4 @@
-﻿namespace MVPCompetitionSprint;
+﻿namespace MVPAdvancedTask;
 
 public class ViewShareSkillPage : IExtentRpt
 {
