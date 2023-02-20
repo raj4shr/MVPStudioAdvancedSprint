@@ -1,6 +1,6 @@
 ﻿
 
-namespace MVPCompetitionSprint;
+namespace MVPAdvancedTask;
 
 public class UserSignInPage:IExtentRpt
 {

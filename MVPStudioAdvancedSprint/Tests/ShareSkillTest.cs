@@ -1,5 +1,5 @@
 ﻿
-namespace MVPCompetitionSprint;
+namespace MVPAdvancedTask;
 
 [TestFixture]
 public class ShareSkillTest : AddNewShareSkillTestData

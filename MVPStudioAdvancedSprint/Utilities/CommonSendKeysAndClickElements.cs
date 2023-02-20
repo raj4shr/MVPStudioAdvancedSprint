@@ -1,4 +1,4 @@
-﻿namespace MVPCompetitionSprint;
+﻿namespace MVPAdvancedTask;
 
 public class CommonSendKeysAndClickElements : CommonDriver
 {
@@ -16,6 +16,7 @@ public class CommonSendKeysAndClickElements : CommonDriver
     public void SendKeysToElement(By elementLocator, string elementValue)
     {
         wait.Until(ExpectedConditions.ElementIsVisible(elementLocator));
+        driver.FindElement(elementLocator).Clear();
         driver.FindElement(elementLocator).Clear();
         driver.FindElement(elementLocator).SendKeys(elementValue);
     }

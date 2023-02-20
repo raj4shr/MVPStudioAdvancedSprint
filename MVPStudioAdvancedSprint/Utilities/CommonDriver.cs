@@ -14,7 +14,7 @@ global using System.Collections;
 global using Excel = Microsoft.Office.Interop.Excel;
 
 
-namespace MVPCompetitionSprint;
+namespace MVPAdvancedTask;
 
 public class CommonDriver
 {

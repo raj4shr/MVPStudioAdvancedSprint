@@ -1,4 +1,4 @@
-﻿namespace MVPCompetitionSprint;
+﻿namespace MVPAdvancedTask;
 
 [SetUpFixture]
 class SetupandTeardown : IExtentRpt

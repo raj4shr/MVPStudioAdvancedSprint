@@ -1,4 +1,4 @@
-﻿namespace MVPCompetitionSprint;
+﻿namespace MVPAdvancedTask;
 
 public class LoginToPortalPage : IExtentRpt
 {
@@ -80,8 +80,8 @@ public class LoginToPortalPage : IExtentRpt
         dataSet = reader.AsDataSet();
         //Since only 1 sheet is in the excel file, index 0 is taken
         dataTable = dataSet.Tables[0];
-        userName = dataTable.Rows[2][0].ToString();
-        password = dataTable.Rows[2][1].ToString();
+        userName = dataTable.Rows[6][0].ToString();
+        password = dataTable.Rows[6][1].ToString();
     }
     #endregion
 

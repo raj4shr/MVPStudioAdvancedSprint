@@ -1,5 +1,5 @@
 ﻿
-namespace MVPCompetitionSprint;
+namespace MVPAdvancedTask;
 
 [TestFixture]
 public class ChangePasswordTest
@@ -16,7 +16,7 @@ public class ChangePasswordTest
         changePasswordPage = new ChangePasswordPage();
     }
 
-	[TestCaseSource(typeof(ProfileChangePasswordTestData))]
+	[TestCaseSource(typeof(ChangePasswordTestData))]
 	public void ChangePassword(string oldPassword,string newPassword,string confirmPassword,bool valid)
 	{
 		changePasswordPage.ChangeUserPwd(oldPassword, newPassword, confirmPassword);
